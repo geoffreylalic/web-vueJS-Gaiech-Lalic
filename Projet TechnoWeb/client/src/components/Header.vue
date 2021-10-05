@@ -6,11 +6,11 @@
 
 <script>
 
-export default {
+export default ({
     name:'Header',
     data : ()=>({
     }),
     methods: {},
     mounted() {}
-}
+})
 </script>

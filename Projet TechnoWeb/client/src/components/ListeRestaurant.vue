@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "ListeRestaurant",
   data: () => ({
     nom: "",
     cuisine: "",
