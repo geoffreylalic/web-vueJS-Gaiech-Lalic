@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <Menu/>
+    <Header/>
     <ListeRestaurant/>
   </div>
 </template>
@@ -7,12 +9,15 @@
 <script>
 
 import ListeRestaurant from './components/ListeRestaurant.vue'
-
+import Menu from './components/Menu.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    ListeRestaurant
+    ListeRestaurant,
+    Menu,
+    Header,
   }
 }
 </script>
