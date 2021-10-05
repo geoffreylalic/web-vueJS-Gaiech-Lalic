@@ -2,7 +2,7 @@
   <div id="app">
     <Menu/>
     <Header/>
-    <ListeRestaurant />
+    <ListeRestaurant pageSize=1 page=1 />
   </div>
 </template>
 
