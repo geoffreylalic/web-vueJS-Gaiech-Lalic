@@ -15,10 +15,10 @@ const store = new Vuex.Store({
 
   },
   mutations: {
-    setNomRestaurantRecherche(nvNomRestaurant) {
+    setNomRestaurantRecherche(state,nvNomRestaurant) {
       this.state.nomRestaurantRecherche = nvNomRestaurant
     },
-    setPageSize(nvPage) {
+    setPageSize(state,nvPage) {
       this.state.pageSize = nvPage
     }
   }

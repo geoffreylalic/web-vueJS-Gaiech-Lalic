@@ -53,8 +53,8 @@ export default {
       // url (required), options (optional)
       let url = "http://localhost:8080/api/restaurants?";
       url += "page=" + this.page;
-      url += "&pagesize=" + this.pageSize;
-      url += "&name=" + this.nomRestaurantRechercher;
+      url += "&pagesize=" + this.$store.state.pageSize;
+      url += "&name=" + this.$store.state.nomRestaurantRecherche;
       fetch(url, {
         method: "get",
       })
@@ -73,6 +73,7 @@ export default {
           console.log(err);
         });
     },
+    
     supprimerRestaurant(r) {
       let url = "http://localhost:8080/api/restaurants/" + r._id;
       fetch(url, {
@@ -132,8 +133,19 @@ export default {
 
   mounted() {
     // `this` points to the vm instance
-    console.log("AVANT RENDU HTML");
     this.getRestaurantsFromServer();
   },
+
+  watch: {
+    // watcher sur le nom du restaurant recherché en store
+    '$store.state.nomRestaurantRecherche' :function() {
+      console.log("dans le watch")
+      this.getRestaurantsFromServer();
+    },
+    '$store.state.pageSize' :function() {
+      console.log("dans le watch")
+      this.getRestaurantsFromServer();
+    }
+  }
 };
 </script>
