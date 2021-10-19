@@ -32,8 +32,8 @@ export default {
   }),
   methods:{
     rechercheRestaurant() {
-      //this.$store.commit("setNomRestaurantRecherche", this.nomRestaurant);
-      //this.$store.commit("setPageSize", this.pageSize);
+      this.$store.commit("setNomRestaurantRecherche", this.nomRestaurant);
+      this.$store.commit("setPageSize", this.pageSize);
       console.log(this.$store.state.nomRestaurantRecherche);
     },
   },
