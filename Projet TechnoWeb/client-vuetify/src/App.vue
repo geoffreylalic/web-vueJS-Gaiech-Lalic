@@ -16,6 +16,7 @@ import ListeRestaurant from "./components/ListeRestaurant.vue";
 export default {
   name: "App",
 
+
   components: {
     Header,
     Recherche,
