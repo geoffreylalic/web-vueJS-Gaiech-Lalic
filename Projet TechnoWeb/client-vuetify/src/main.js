@@ -2,6 +2,27 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import Vuex from 'vuex'
+import VueRouter from 'vue-router'
+
+//import Recherche from './components/Recherche.vue'
+import Menu from "./components/Menu.vue";
+import ListeRestaurant from "./components/ListeRestaurant.vue";
+Vue.use(VueRouter)
+
+const routes = [
+  { path: '/foo', component: Menu },
+  { path: '/', component: ListeRestaurant }
+]
+
+// 3. Create the router instance and pass the `routes` option
+// You can pass in additional options here, but let's
+// keep it simple for now.
+const router = new VueRouter({
+  routes // short for `routes: routes`
+})
+
+
+
 
 
 Vue.use(Vuex)
@@ -28,6 +49,7 @@ Vue.config.productionTip = false
 new Vue({
   vuetify,
   store: store,
+  router,
   render: h => h(App),
 }).$mount('#app')
 
