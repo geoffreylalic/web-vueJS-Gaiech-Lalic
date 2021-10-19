@@ -6,12 +6,12 @@ import VueRouter from 'vue-router'
 
 //import Recherche from './components/Recherche.vue'
 import Menu from "./components/Menu.vue";
-import ListeRestaurant from "./components/ListeRestaurant.vue";
+import Accueil from "./components/Accueil.vue";
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/foo', component: Menu },
-  { path: '/', component: ListeRestaurant }
+  { path: '/localisation', component: Menu },
+  { path: '/', component: Accueil }
 ]
 
 // 3. Create the router instance and pass the `routes` option

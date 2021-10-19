@@ -1,22 +1,24 @@
 <template>
   <v-app>
-    <Menu />
-    <Header />
+    <Menu/>
+    <Recherche/>
     <ListeRestaurant />
   </v-app>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Menu from "./components/Menu.vue";
-import ListeRestaurant from "./components/ListeRestaurant.vue";
+
+import Menu from "./Menu.vue";
+import ListeRestaurant from "./ListeRestaurant.vue";
+import Recherche from "./Recherche.vue";
 
 export default {
   name: "Accueil",
 
   components: {
-    Header,
+
     Menu,
+    Recherche,
     ListeRestaurant
   },
 

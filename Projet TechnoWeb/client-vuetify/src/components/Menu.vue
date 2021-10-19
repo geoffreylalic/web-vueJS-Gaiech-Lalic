@@ -1,5 +1,6 @@
 <template>
     <div>
+        <H1>YO</H1>
     </div>
 </template>
 
