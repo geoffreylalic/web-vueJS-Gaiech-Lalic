@@ -30,7 +30,6 @@ export default {
     rechercheRestaurant() {
       this.$store.commit("setNomRestaurantRecherche", this.nomRestaurant);
       this.$store.commit("setPageSize", this.pageSize);
-      console.log("dans recherche methods input : "+this.$store.state.nomRestaurantRecherche);
     },
   },
 };

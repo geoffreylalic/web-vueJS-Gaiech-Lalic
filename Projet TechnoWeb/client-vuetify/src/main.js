@@ -3,6 +3,9 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
+import { mdiAccount, mdiPencil, mdiShareVariant, mdiDelete } from "@mdi/js";
+// ----- ICONS ---- //
+Vue
 
 //import Recherche from './components/Recherche.vue'
 import Menu from "./components/Menu.vue";

@@ -9,9 +9,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="r in restaurants" :key="r._id" @click="supprimerRestaurant">
+          <tr
+            v-for="r in restaurants"
+            :key="r._id"
+          >
             <td>{{ r.name }}</td>
             <td>{{ r.cuisine }}</td>
+            <td>
+              <v-btn icon color="red" @click="supprimerRestaurant(r)">
+                <v-icon>{{icons.mdiDelete}}</v-icon>
+              </v-btn>
+            </td>
           </tr>
         </tbody>
       </template>
@@ -20,9 +28,12 @@
 </template>
 
 <script>
+import icons from "../assets/icons"
+
 export default {
   name: "ListeRestaurant",
   data: () => ({
+    icons,
     nom: "",
     cuisine: "",
     nbRestaurantsTotal: 0,
@@ -73,7 +84,7 @@ export default {
           console.log(err);
         });
     },
-    
+
     supprimerRestaurant(r) {
       let url = "http://localhost:8080/api/restaurants/" + r._id;
       fetch(url, {
@@ -138,14 +149,14 @@ export default {
 
   watch: {
     // watcher sur le nom du restaurant recherché en store
-    '$store.state.nomRestaurantRecherche' :function() {
-      console.log("dans le watch")
+    "$store.state.nomRestaurantRecherche": function () {
+      console.log("dans le watch");
       this.getRestaurantsFromServer();
     },
-    '$store.state.pageSize' :function() {
-      console.log("dans le watch")
+    "$store.state.pageSize": function () {
+      console.log("dans le watch");
       this.getRestaurantsFromServer();
-    }
-  }
+    },
+  },
 };
 </script>
