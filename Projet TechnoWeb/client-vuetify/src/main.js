@@ -5,7 +5,6 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 
 // ----- ICONS ---- //
-Vue
 
 //import Recherche from './components/Recherche.vue'
 import Menu from "./components/Menu.vue";
