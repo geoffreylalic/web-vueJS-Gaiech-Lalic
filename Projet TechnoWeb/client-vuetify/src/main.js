@@ -12,8 +12,9 @@ import Accueil from "./components/Accueil.vue";
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', component: Accueil },
   { path: '/localisation', component: Menu },
-  { path: '/', component: Accueil }
+  { path: '/detail', component: Menu },
 ]
 
 // 3. Create the router instance and pass the `routes` option
