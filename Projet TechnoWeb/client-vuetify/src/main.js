@@ -9,19 +9,20 @@ import VueRouter from 'vue-router'
 //import Recherche from './components/Recherche.vue'
 import Menu from "./components/Menu.vue";
 import Accueil from "./components/Accueil.vue";
+import RestaurantDetail from "./components/RestaurantDetail.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', component: Accueil },
-  { path: '/localisation', component: Menu },
-  { path: '/detail', component: Menu },
+  { name : "localisation" , path: '/localisation', component: Menu },
+  { name : "accueil", path: '/', component: Accueil },
+  { name : "detailRestaurant", path: "/restaurants/?:id", component : RestaurantDetail}
 ]
 
-// 3. Create the router instance and pass the `routes` option
+// 3. Create the router instance and pass the routes option
 // You can pass in additional options here, but let's
 // keep it simple for now.
 const router = new VueRouter({
-  routes // short for `routes: routes`
+  routes // short for routes: routes
 })
 
 
@@ -55,7 +56,3 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
-
-
-
-

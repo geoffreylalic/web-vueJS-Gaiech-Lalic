@@ -10,7 +10,7 @@
         </thead>
         <tbody>
           <p v-if="restaurants.length == 0">No data aviable</p>
-          <tr v-for="r in restaurants" :key="r._id">
+          <tr v-for="r in restaurants" :key="r._id" @click="redirectDetails(r)">
             <td>{{ r.name }}</td>
             <td>{{ r.cuisine }}</td>
             <td>
@@ -137,6 +137,10 @@ export default {
     },
     chercherRestaurant: function () {
       this.getRestaurantsFromServer();
+    },
+
+    redirectDetails(r) {
+      return this.$router.push({ name: "detailRestaurant", params: { id: r._id } });
     },
   },
 
