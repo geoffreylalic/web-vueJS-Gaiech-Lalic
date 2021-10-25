@@ -9,15 +9,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="r in restaurants"
-            :key="r._id"
-          >
+          <p v-if="restaurants.length == 0">No data aviable</p>
+          <tr v-for="r in restaurants" :key="r._id">
             <td>{{ r.name }}</td>
             <td>{{ r.cuisine }}</td>
             <td>
               <v-btn icon color="red" @click="supprimerRestaurant(r)">
-                <v-icon>{{icons.mdiDelete}}</v-icon>
+                <v-icon>{{ icons.mdiDelete }}</v-icon>
               </v-btn>
             </td>
           </tr>
@@ -28,7 +26,7 @@
 </template>
 
 <script>
-import icons from "../assets/icons"
+import icons from "../assets/icons";
 
 export default {
   name: "ListeRestaurant",
