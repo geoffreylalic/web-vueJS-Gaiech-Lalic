@@ -7,13 +7,14 @@ import VueRouter from 'vue-router'
 // ----- ICONS ---- //
 
 //import Recherche from './components/Recherche.vue'
-import Menu from "./components/Menu.vue";
+//import Menu from "./components/Menu.vue";
+import map from "./components/Map.vue";
 import Accueil from "./components/Accueil.vue";
 import RestaurantDetail from "./components/RestaurantDetail.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  { name : "localisation" , path: '/localisation', component: Menu },
+  { name : "localisation" , path: '/localisation', component: map },
   { name : "accueil", path: '/', component: Accueil },
   { name : "detailRestaurant", path: "/restaurants/?:id", component : RestaurantDetail}
 ]
