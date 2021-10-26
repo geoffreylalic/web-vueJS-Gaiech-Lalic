@@ -1,6 +1,6 @@
 <template>
   <v-tabs id="menu" fixed-tabs background-color="indigo" dark>
-    <v-tab> Accueil </v-tab>
+    <v-tab @click="redirectAccueil()"> Accueil </v-tab>
     <v-tab @click="redirectLocalisation()"> Localisation </v-tab>
     <v-tab> Admin </v-tab>
   </v-tabs>
@@ -12,12 +12,16 @@ export default {
   data: () => ({}),
   methods: {
     redirectLocalisation() {
-      return this.$router.push({ name: "localisation"});
+      return this.$router.push({ name: "localisation" });
     },
+
+    redirectAccueil() {
+      return this.$router.push({ name: "accueil" });
     },
+  },
+
   mounted() {},
 };
-
 </script>
 
 <style>

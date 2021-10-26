@@ -84,7 +84,7 @@ export default {
     },
 
     supprimerRestaurant(r) {
-      let url = "http://localhost:8080/api/restaurants/" + r._id;
+      let url = "http://localhost:8080/api/restaurants/?" + r._id;
       fetch(url, {
         method: "DELETE",
       })
@@ -140,7 +140,7 @@ export default {
     },
 
     redirectDetails(r) {
-      return this.$router.push({ name: "detailRestaurant", params: { id: r._id } });
+      return this.$router.push({ name: "detailRestaurant", params: { id: r._id, restaurant:r} });
     },
   },
 

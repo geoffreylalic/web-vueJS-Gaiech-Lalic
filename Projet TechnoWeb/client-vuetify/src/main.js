@@ -14,9 +14,9 @@ import RestaurantDetail from "./components/RestaurantDetail.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  { name : "localisation" , path: '/localisation', component: map },
-  { name : "accueil", path: '/', component: Accueil },
-  { name : "detailRestaurant", path: "/restaurants/?:id", component : RestaurantDetail}
+  { name: "localisation", path: '/localisation', component: map },
+  { name: "accueil", path: '/', component: Accueil },
+  { name: "detailRestaurant", path: "/restaurants/?:id", component: RestaurantDetail, props: true }
 ]
 
 // 3. Create the router instance and pass the routes option
@@ -41,10 +41,10 @@ const store = new Vuex.Store({
 
   },
   mutations: {
-    setNomRestaurantRecherche(state,nvNomRestaurant) {
+    setNomRestaurantRecherche(state, nvNomRestaurant) {
       this.state.nomRestaurantRecherche = nvNomRestaurant
     },
-    setPageSize(state,nvPage) {
+    setPageSize(state, nvPage) {
       this.state.pageSize = nvPage
     }
   }
