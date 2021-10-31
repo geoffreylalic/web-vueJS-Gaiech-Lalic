@@ -40,6 +40,7 @@ export default {
 
   methods: {
     getRestaurantsFromServer() {
+        this.coords = []// remise a zero des coordonnées
       // url (required), options (optional)
       let url = "http://localhost:8080/api/restaurants?";
       url += "page=" + this.page;
@@ -57,7 +58,6 @@ export default {
               this.nbRestaurantsTotal / this.pageSize
             );
             this.restaurants.forEach((r) => {
-              
               this.coords.push(r.address.coord);
             });
             console.log(this.coords);

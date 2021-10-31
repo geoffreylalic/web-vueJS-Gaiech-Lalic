@@ -34,7 +34,7 @@ export default {
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     center: [1,2],
-    zoom: 1,
+    zoom: 5,
     staticAnchor: [16, 37],
     markers: [],
   }),
@@ -58,6 +58,13 @@ export default {
   created() {
     this.createMarkers();
   },
+
+  watch:{
+    coordinates(){
+      this.markers = [] // remise a zero des coordonnées
+      this.createMarkers()
+    }
+  }
 };
 </script>
 
