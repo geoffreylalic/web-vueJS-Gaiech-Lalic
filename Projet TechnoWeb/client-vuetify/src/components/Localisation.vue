@@ -2,7 +2,7 @@
   <v-app>
     <Menu />
     <Recherche />
-    <Map />
+    <Map :coordinates="this.coords" />
   </v-app>
 </template>
 
@@ -20,10 +20,21 @@ export default {
     Map,
   },
 
-  data: () => ({}),
+  data: () => ({
+    nom: "",
+    cuisine: "",
+    nbRestaurantsTotal: 0,
+    page: 0,
+    pageSize: 10,
+    nbpagetotal: 0,
+    nomRestaurantRechercher: "",
+    msg: "",
+    restaurants: [],
+    coords: [],
+  }),
 
-  methods:{
-          getRestaurantsFromServer() {
+  methods: {
+    getRestaurantsFromServer() {
       // url (required), options (optional)
       let url = "http://localhost:8080/api/restaurants?";
       url += "page=" + this.page;
@@ -40,12 +51,22 @@ export default {
             this.nbpagetotal = Math.round(
               this.nbRestaurantsTotal / this.pageSize
             );
+            this.restaurants.forEach((r) => {
+              
+              this.coords.push(r.address.coord);
+            });
+            console.log(this.coords);
+            
           });
         })
         .catch((err) => {
           console.log(err);
         });
     },
+  },
+
+  mounted() {
+    this.getRestaurantsFromServer();
   },
 
   watch: {

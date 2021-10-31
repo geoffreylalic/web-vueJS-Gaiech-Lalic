@@ -47,7 +47,6 @@ export default {
     },
     createMarkers() {
       this.coordinates.forEach((coord, i) => {
-        console.log(coord)
         this.markers.push({
           id: i,
           coordinates: [coord[1], coord[0]],
