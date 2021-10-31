@@ -19,6 +19,10 @@ import { LMap, LTileLayer,LMarker } from "vue2-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default {
+  props:{
+    latitude:Number,
+    longitude:Number
+  },
   components: {
     LMap,
     LTileLayer,
@@ -29,22 +33,27 @@ export default {
     center: [49.1193089, 6.1757156],
     zoom: 6,
     markers: [
-      { id: 1, coordinates: [49.11491, 6.17881] },
-      { id: 2, coordinates: [49.13329, 6.15437] },
-      { id: 3, coordinates: [49.10216, 6.15885] },
-      { id: 4, coordinates: [49.13601, 6.19963] },
-      { id: 5, coordinates: [49.105563, 6.182234] },
     ],
   }),
   methods: {
     zoomUpdated(zoom) {
       this.zoom = zoom;
       console.log(this.markers);
+      console.log(this.latitude, this.longitude)
     },
     centerUpdated(center) {
       this.center = center;
     },
+    createMarkers(long, lat){
+      this.markers.push({
+        id: this.markers.length, coordinates: [long, lat]
+      })
+    }
   },
+
+  mounted(){
+    this.createMarkers(this.longitude,this.latitude)
+  }
 };
 </script>
 

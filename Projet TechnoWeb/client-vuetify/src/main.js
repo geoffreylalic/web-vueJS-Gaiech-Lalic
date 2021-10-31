@@ -23,6 +23,7 @@ const routes = [
 // You can pass in additional options here, but let's
 // keep it simple for now.
 const router = new VueRouter({
+  mode: 'history',
   routes // short for routes: routes
 })
 
@@ -36,6 +37,7 @@ const store = new Vuex.Store({
   state: {
     nomRestaurantRecherche: '',
     pageSize: '',
+    restaurantActive : null,
   },
   getters: {
 
@@ -46,6 +48,9 @@ const store = new Vuex.Store({
     },
     setPageSize(state, nvPage) {
       this.state.pageSize = nvPage
+    },
+    setRestaurantActive(state,nvRestaurantActive){
+      this.state.restaurantActive = nvRestaurantActive
     }
   }
 })
