@@ -28,7 +28,7 @@
           grade
         }}
         <span v-for="(star,i) in averageScore" :key="i">
-          <v-icon>{{icon.mdiStar}}</v-icon>
+          <v-icon>{{icons.mdiStar}}</v-icon>
         </span>
         </v-row>
       </v-card>
