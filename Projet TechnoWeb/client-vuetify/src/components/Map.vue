@@ -1,7 +1,7 @@
 <template>
   <l-map
     id="map"
-    :center="center"
+    :center="markers[0].coordinates"
     :zoom="zoom"
     class="map"
     ref="map"
@@ -10,12 +10,15 @@
   >
     <l-tile-layer :url="url"> </l-tile-layer>
     <l-marker v-for="m in markers" :key="m.id" :lat-lng="m.coordinates">
+      <l-icon :icon-anchor="staticAnchor">
+        <img src="../assets/marker.png" />
+      </l-icon>
     </l-marker>
   </l-map>
 </template>
 
 <script>
-import { LMap, LTileLayer,LMarker } from "vue2-leaflet";
+import { LMap, LTileLayer,LMarker,LIcon } from "vue2-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default {
@@ -26,20 +29,20 @@ export default {
   components: {
     LMap,
     LTileLayer,
-    LMarker
+    LMarker,LIcon
   },
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    center: [49.1193089, 6.1757156],
+    center: [],
     zoom: 6,
+     staticAnchor: [16, 37],
     markers: [
     ],
   }),
   methods: {
     zoomUpdated(zoom) {
       this.zoom = zoom;
-      console.log(this.markers);
-      console.log(this.latitude, this.longitude)
+      
     },
     centerUpdated(center) {
       this.center = center;
@@ -50,7 +53,7 @@ export default {
       })
     }
   },
-
+  
   mounted(){
     this.createMarkers(this.longitude,this.latitude)
   }
@@ -63,5 +66,9 @@ export default {
   width: 40%;
   height: 40%;
   overflow: hidden;
+}
+img {
+  width: 30px;
+  height: 30px;
 }
 </style>
