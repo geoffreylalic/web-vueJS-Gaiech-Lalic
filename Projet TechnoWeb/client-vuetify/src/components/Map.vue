@@ -34,7 +34,7 @@ export default {
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     center: [1,2],
-    zoom: 5,
+    zoom: 1,
     staticAnchor: [16, 37],
     markers: [],
   }),

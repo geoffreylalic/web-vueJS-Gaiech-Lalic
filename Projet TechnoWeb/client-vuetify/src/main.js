@@ -36,6 +36,7 @@ Vue.use(Vuex)
 // ------ STORE -------- //
 const store = new Vuex.Store({
   state: {
+    pageActive:'accueil',
     nomRestaurantRecherche: '',
     pageSize: '',
     restaurantActive : null,
@@ -52,6 +53,9 @@ const store = new Vuex.Store({
     },
     setRestaurantActive(state,nvRestaurantActive){
       this.state.restaurantActive = nvRestaurantActive
+    },
+    SetpageActive(state,nvPageActive){
+      this.state.pageActive = nvPageActive
     }
   }
 })
