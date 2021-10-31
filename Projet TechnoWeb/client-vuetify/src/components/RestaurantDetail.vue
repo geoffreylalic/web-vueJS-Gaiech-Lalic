@@ -8,6 +8,10 @@
           <div>
             <v-icon>{{ icons.mdiSilverwareForkKnife }}</v-icon>
             {{ restaurant.cuisine }}
+            <span v-for="(star,i) in 5" :key="i">
+          <v-icon v-if="i<averageScore" color="yellow">{{icons.mdiStar}}</v-icon>
+          <v-icon v-else color="grey">{{icons.mdiStar}}</v-icon>
+        </span>
           </div>
           <div>
             <v-icon>{{ icons.mdiStoreMarker }}</v-icon>
@@ -27,9 +31,6 @@
         <v-row v-for="(grade, i) in restaurant.grades" :key="i">{{
           grade
         }}
-        <span v-for="(star,i) in averageScore" :key="i">
-          <v-icon>{{icons.mdiStar}}</v-icon>
-        </span>
         </v-row>
       </v-card>
     </v-container>
