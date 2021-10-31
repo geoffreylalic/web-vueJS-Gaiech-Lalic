@@ -1,8 +1,13 @@
 <template>
   <v-app>
     <Menu />
+        <v-container>
     <Recherche />
+    </v-container>
+     <v-container>
+
     <Map :coordinates="this.coords" />
+ </v-container>
   </v-app>
 </template>
 

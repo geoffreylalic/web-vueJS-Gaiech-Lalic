@@ -20,10 +20,17 @@
             </td>
           </tr>
         </tbody>
+       
+         <v-btn  class="previous round" :disabled="page === 0" @click="pagePrecedente()">&#8249;</v-btn>
+        <a id='page'> {{page}} - {{nbpagetotal}}</a>
+        <v-btn class="next round" :disabled="page === nbpagetotal" @click="pageSuivant()" >&#8250;</v-btn>
+       
       </template>
     </v-simple-table>
   </v-container>
 </template>
+
+
 
 <script>
 import icons from "../assets/icons";
@@ -48,6 +55,7 @@ export default {
       else {
         this.page--;
         this.getRestaurantsFromServer();
+         console.log(this.nbpagetotal);
       }
     },
     pageSuivant() {
@@ -63,6 +71,14 @@ export default {
       let url = "http://localhost:8080/api/restaurants?";
       url += "page=" + this.page;
       url += "&pagesize=" + this.$store.state.pageSize;
+      console.log(this.$store.state.pageSize);
+      if (this.$store.state.pageSize != '' ){
+        this.pageSize=this.$store.state.pageSize
+        }
+        else {
+           this.pageSize=10;
+        }
+      
       url += "&name=" + this.$store.state.nomRestaurantRecherche;
       fetch(url, {
         method: "get",
@@ -139,7 +155,10 @@ export default {
     },
 
     redirectDetails(r) {
-      return this.$router.push({ name: "detailRestaurant", params: { id: r._id, restaurant:r} });
+      return this.$router.push({
+        name: "detailRestaurant",
+        params: { id: r._id, restaurant: r },
+      });
     },
   },
 
@@ -159,3 +178,29 @@ export default {
   },
 };
 </script>
+<style >
+#page {
+  color: #1e1e1e;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.v-btn:not(.v-btn--round).v-size--default{
+  min-width: 36px;
+}
+.v-btn  {
+  background-color: #ddd;
+  color: black;
+}
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+
+.next {
+  background-color: #f1f1f1;
+  color: white;
+}
+
+
+</style>
