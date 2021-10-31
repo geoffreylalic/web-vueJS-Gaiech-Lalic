@@ -13,12 +13,14 @@
       <l-icon :icon-anchor="staticAnchor">
         <img src="../assets/marker.png" />
       </l-icon>
+      <l-popup >
+        <a id="popup" >Hello!</a></l-popup>
     </l-marker>
   </l-map>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LIcon, LPopup } from "vue2-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default {
@@ -30,11 +32,12 @@ export default {
     LTileLayer,
     LMarker,
     LIcon,
+    LPopup
   },
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     center: [1,2],
-    zoom: 1,
+    zoom: 2,
     staticAnchor: [16, 37],
     markers: [],
   }),
@@ -53,6 +56,7 @@ export default {
         });
       });
     },
+    
   },
 
   created() {
@@ -78,5 +82,12 @@ export default {
 img {
   width: 30px;
   height: 30px;
+}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
+margin-bottom: 47px;
+}
+#popup {
+  color: #1e1e1e;
+    
 }
 </style>
