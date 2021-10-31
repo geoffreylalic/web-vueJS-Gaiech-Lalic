@@ -9,6 +9,7 @@
           </tr>
         </thead>
         <tbody>
+          <p v-if="restaurants.length == 0">No data aviable</p>
           <tr v-for="r in restaurants" :key="r._id" @click="redirectDetails(r)">
             <td>{{ r.name }}</td>
             <td>{{ r.cuisine }}</td>
@@ -21,7 +22,6 @@
         </tbody>
       </template>
     </v-simple-table>
-    <p class="no_data" v-if="restaurants.length == 0">aucun restaurant ne correspond à votre recherche</p>
   </v-container>
 </template>
 
@@ -70,7 +70,6 @@ export default {
         .then((res) => {
           // arrow functions, conserve le bon "this"
           res.json().then((res) => {
-            console.log(res.count);
             this.restaurants = res.data;
             this.nbRestaurantsTotal = res.count;
             this.nbpagetotal = Math.round(
@@ -140,10 +139,7 @@ export default {
     },
 
     redirectDetails(r) {
-      return this.$router.push({
-        name: "detailRestaurant",
-        params: { id: r._id, restaurant: r },
-      });
+      return this.$router.push({ name: "detailRestaurant", params: { id: r._id, restaurant:r} });
     },
   },
 
@@ -155,19 +151,11 @@ export default {
   watch: {
     // watcher sur le nom du restaurant recherché en store
     "$store.state.nomRestaurantRecherche": function () {
-      console.log("dans le watch");
       this.getRestaurantsFromServer();
     },
     "$store.state.pageSize": function () {
-      console.log("dans le watch");
       this.getRestaurantsFromServer();
     },
   },
 };
 </script>
-<style>
-.no_data {
-  color: rgba(0, 0, 0, 0.38);
-  text-align: center;
-}
-</style>

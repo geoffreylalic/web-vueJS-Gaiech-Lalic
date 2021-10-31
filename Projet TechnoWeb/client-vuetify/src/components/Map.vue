@@ -1,7 +1,7 @@
 <template>
   <l-map
     id="map"
-    :center="markers[0].coordinates"
+    :center="center"
     :zoom="zoom"
     class="map"
     ref="map"
@@ -18,45 +18,47 @@
 </template>
 
 <script>
-import { LMap, LTileLayer,LMarker,LIcon } from "vue2-leaflet";
+import { LMap, LTileLayer, LMarker, LIcon } from "vue2-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default {
-  props:{
-    latitude:Number,
-    longitude:Number
+  props: {
+    coordinates: [],
   },
   components: {
     LMap,
     LTileLayer,
-    LMarker,LIcon
+    LMarker,
+    LIcon,
   },
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    center: [],
-    zoom: 6,
-     staticAnchor: [16, 37],
-    markers: [
-    ],
+    center: [1,2],
+    zoom: 1,
+    staticAnchor: [16, 37],
+    markers: [],
   }),
   methods: {
     zoomUpdated(zoom) {
       this.zoom = zoom;
-      
     },
     centerUpdated(center) {
       this.center = center;
     },
-    createMarkers(long, lat){
-      this.markers.push({
-        id: this.markers.length, coordinates: [long, lat]
-      })
-    }
+    createMarkers() {
+      this.coordinates.forEach((coord, i) => {
+        console.log(coord)
+        this.markers.push({
+          id: i,
+          coordinates: [coord[1], coord[0]],
+        });
+      });
+    },
   },
-  
-  mounted(){
-    this.createMarkers(this.longitude,this.latitude)
-  }
+
+  created() {
+    this.createMarkers();
+  },
 };
 </script>
 

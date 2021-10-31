@@ -12,7 +12,7 @@ export default {
   data: () => ({}),
   methods: {
     redirectLocalisation() {
-      return this.$router.push({ name: "localisation" });
+      return this.$router.push({ name: "localisation" , params: {}});
     },
 
     redirectAccueil() {

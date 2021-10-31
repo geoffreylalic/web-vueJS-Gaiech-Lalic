@@ -41,8 +41,7 @@
     <br />
     <v-container>
       <Map
-        :latitude="restaurant.address.coord[0]"
-        :longitude="restaurant.address.coord[1]"
+        :coordinates="[restaurant.address.coord]"
       />
     </v-container>
   </div>

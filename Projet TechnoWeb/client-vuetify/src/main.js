@@ -8,13 +8,13 @@ import VueRouter from 'vue-router'
 
 //import Recherche from './components/Recherche.vue'
 //import Menu from "./components/Menu.vue";
-import map from "./components/Map.vue";
+import Localisation from "./components/Localisation.vue";
 import Accueil from "./components/Accueil.vue";
 import RestaurantDetail from "./components/RestaurantDetail.vue"
 Vue.use(VueRouter)
 
 const routes = [
-  { name: "localisation", path: '/localisation', component: map },
+  { name: "localisation", path: '/localisation', component: Localisation },
   { name: "accueil", path: '/', component: Accueil },
   { name: "detailRestaurant", path: "/restaurants/?:id", component: RestaurantDetail, props: true }
 ]
