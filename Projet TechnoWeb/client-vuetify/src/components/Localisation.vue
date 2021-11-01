@@ -6,7 +6,7 @@
     </v-container>
      <v-container>
 
-    <Map :coordinates="this.coords" />
+    <Map :coordinates="this.restaurants" />
  </v-container>
   </v-app>
 </template>
@@ -60,7 +60,7 @@ export default {
             this.restaurants.forEach((r) => {
               this.coords.push(r.address.coord);
             });
-            console.log(this.coords);
+            //console.log(this.coords);
             
           });
         })

@@ -155,6 +155,7 @@ export default {
     },
 
     redirectDetails(r) {
+       this.$store.commit("SetpageActive", "detailrestaurant");
       return this.$router.push({
         name: "detailRestaurant",
         params: { id: r._id, restaurant: r },

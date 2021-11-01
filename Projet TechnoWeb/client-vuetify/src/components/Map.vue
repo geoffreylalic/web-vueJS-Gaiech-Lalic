@@ -9,12 +9,13 @@
     @update:center="centerUpdated"
   >
     <l-tile-layer :url="url"> </l-tile-layer>
-    <l-marker v-for="m in markers" :key="m.id" :lat-lng="m.coordinates">
+    <l-marker v-for="m in markers" :key="m._id" :lat-lng="m.coordinates">
       <l-icon :icon-anchor="staticAnchor">
         <img src="../assets/marker.png" />
       </l-icon>
-      <l-popup >
-        <a id="popup" >Hello!</a></l-popup>
+      <l-popup>
+        <a id="popup" >{{ m.name }}</a>
+      </l-popup>
     </l-marker>
   </l-map>
 </template>
@@ -25,18 +26,18 @@ import "leaflet/dist/leaflet.css";
 
 export default {
   props: {
-    coordinates: [],
+    coordinates: [], // en reprend toute les coordonné utile du restaurant
   },
   components: {
     LMap,
     LTileLayer,
     LMarker,
     LIcon,
-    LPopup
+    LPopup,
   },
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    center: [1,2],
+    center: [1, 2],
     zoom: 2,
     staticAnchor: [16, 37],
     markers: [],
@@ -49,26 +50,42 @@ export default {
       this.center = center;
     },
     createMarkers() {
+      // c'est ici quand prend tout les données du marker
       this.coordinates.forEach((coord, i) => {
+        console.log(coord._id);
+        
         this.markers.push({
-          id: i,
-          coordinates: [coord[1], coord[0]],
+          id : i,
+          _id: coord._id,
+          coordinates: [coord.address.coord[1], coord.address.coord[0]],
+          name: coord.name,
+          borough:coord.borough,
+          cuisine:coord.cuisine,
+          grades:[coord.grades],
+          restaurant_id: coord.restaurant_id
         });
       });
     },
-    
+
+    redirectDetails(m) {
+      this.$store.commit("SetpageActive", "detailrestaurant");
+      return this.$router.push({
+        name: "detailRestaurant",
+        params: { id: m._id, restaurant: m },
+      });
+    },
   },
 
   created() {
     this.createMarkers();
   },
 
-  watch:{
-    coordinates(){
-      this.markers = [] // remise a zero des coordonnées
-      this.createMarkers()
-    }
-  }
+  watch: {
+    coordinates() {
+      this.markers = []; // remise a zero des coordonnées
+      this.createMarkers();
+    },
+  },
 };
 </script>
 
@@ -84,10 +101,9 @@ img {
   height: 30px;
 }
 .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
-margin-bottom: 47px;
+  margin-bottom: 47px;
 }
 #popup {
   color: #1e1e1e;
-    
 }
 </style>

@@ -23,8 +23,8 @@ export default {
     redirectAccueil() {
 
        if (this.$store.state.pageActive!="accueil"){
-             this.$store.commit("SetpageActive", "accueil"); 
-      return this.$router.push({ name: "accueil" });
+      this.$store.commit("SetpageActive", "accueil");
+      return this.$router.push({ name: "accueil", params: {} });
        }
       
     },
