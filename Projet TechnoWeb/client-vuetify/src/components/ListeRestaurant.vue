@@ -34,7 +34,6 @@
 
 <script>
 import icons from "../assets/icons";
-import _ from 'lodash';
 
 export default {
   name: "ListeRestaurant",
@@ -150,12 +149,6 @@ export default {
     },
     getColor(index) {
       return index % 2 ? "white" : "LightGray";
-    },
-    chercherRestaurant: function () {
-     _.debounce(function () {
-
-                    this.getRestaurantsFromServer();
-                }, 1000)
     },
 
     redirectDetails(r) {

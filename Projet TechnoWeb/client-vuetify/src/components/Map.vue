@@ -14,7 +14,7 @@
         <img src="../assets/marker.png" />
       </l-icon>
       <l-popup>
-        <a id="popup">{{ m.name }}!</a>
+        <a id="popup" @click=" redirectDetails(m)">{{ m.name }}!</a>
       </l-popup>
     </l-marker>
   </l-map>
@@ -51,11 +51,11 @@ export default {
     },
     createMarkers() {
       // c'est ici quand prend tout les données du marker
-      this.coordinates.forEach((coord, i) => {
+      this.coordinates.forEach((coord) => {
         console.log(coord);
         this.markers.push({
-          id : i,
           _id: coord._id,
+          address : coord.address,
           coordinates: [coord.address.coord[1], coord.address.coord[0]],
           name: coord.name,
           borough:coord.borough,
@@ -63,6 +63,14 @@ export default {
           grades:coord.grades,
           restaurant_id: coord.restaurant_id,
         });
+      });
+      
+    },
+     redirectDetails(r) {
+       this.$store.commit("SetpageActive", "detailrestaurant");
+      return this.$router.push({
+        name: "detailRestaurant",
+        params: { id: r._id, restaurant: r },
       });
     },
 

@@ -3,13 +3,15 @@
     <v-row class="rechercheBar">
       <v-col cols="5">
         <v-text-field
+        @input="chercherRestaurant()"
+        type 
           label="#Restaurant"
-          @input="chercherRestaurant()"
+          
           v-model="nomRestaurant"
         ></v-text-field>
       </v-col>
       <v-col cols="5">
-        <v-text-field label="#Page Size" v-model="pageSize"></v-text-field>
+        <v-text-field label="#Page Size"   @input="chercherRestaurant()" v-model="pageSize"></v-text-field>
       </v-col>
       <v-col cols="2">
         <v-btn icon color="green" @click="rechercheRestaurant">
@@ -22,6 +24,7 @@
 
 <script>
 import _ from 'lodash';
+
 export default {
   name: "Recherche",
   data: () => ({
@@ -33,11 +36,12 @@ export default {
       this.$store.commit("setNomRestaurantRecherche", this.nomRestaurant);
       this.$store.commit("setPageSize", this.pageSize);
     },
-     chercherRestaurant: function () {
-     _.debounce(function () {
-                   this.rechercheRestaurant();
-                }, 1000)
-    },
+    chercherRestaurant:
+                _.debounce(function () {
+
+                    this.rechercheRestaurant();
+                }, 1000),
+   
   },
 };
 </script>
