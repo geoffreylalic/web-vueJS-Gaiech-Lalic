@@ -9,12 +9,12 @@
     @update:center="centerUpdated"
   >
     <l-tile-layer :url="url"> </l-tile-layer>
-    <l-marker v-for="m in markers" :key="m._id" :lat-lng="m.coordinates">
+    <l-marker v-for="m in markers" :key="m.id" :lat-lng="m.coordinates">
       <l-icon :icon-anchor="staticAnchor">
         <img src="../assets/marker.png" />
       </l-icon>
       <l-popup>
-        <a id="popup" >{{ m.name }}</a>
+        <a id="popup">{{ m.name }}!</a>
       </l-popup>
     </l-marker>
   </l-map>
@@ -52,8 +52,7 @@ export default {
     createMarkers() {
       // c'est ici quand prend tout les données du marker
       this.coordinates.forEach((coord, i) => {
-        console.log(coord._id);
-        
+        console.log(coord);
         this.markers.push({
           id : i,
           _id: coord._id,
@@ -61,19 +60,13 @@ export default {
           name: coord.name,
           borough:coord.borough,
           cuisine:coord.cuisine,
-          grades:[coord.grades],
-          restaurant_id: coord.restaurant_id
+          grades:coord.grades,
+          restaurant_id: coord.restaurant_id,
         });
       });
     },
 
-    redirectDetails(m) {
-      this.$store.commit("SetpageActive", "detailrestaurant");
-      return this.$router.push({
-        name: "detailRestaurant",
-        params: { id: m._id, restaurant: m },
-      });
-    },
+    
   },
 
   created() {

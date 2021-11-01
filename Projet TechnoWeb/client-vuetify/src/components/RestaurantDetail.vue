@@ -41,7 +41,7 @@
     <br />
     <v-container>
       <Map
-       
+        :coordinates="[restaurant]"
       />
     </v-container>
   </div>
@@ -74,7 +74,7 @@ export default {
   methods: {},
 
   computed: {
-   /* averageScore: function () {
+    averageScore: function () {
       let grades = this.restaurant.grades;
       let score = 0;
       grades.forEach((g) => {
@@ -82,7 +82,7 @@ export default {
       });
       let scoreAv = score / grades.length;
       return Math.round(scoreAv / 4);
-    },*/
+    },
   },
 
   mounted() {

@@ -20,11 +20,11 @@
             </td>
           </tr>
         </tbody>
-       
+       <div>
          <v-btn  class="previous round" :disabled="page === 0" @click="pagePrecedente()">&#8249;</v-btn>
         <a id='page'> {{page}} - {{nbpagetotal}}</a>
         <v-btn class="next round" :disabled="page === nbpagetotal" @click="pageSuivant()" >&#8250;</v-btn>
-       
+       </div>
       </template>
     </v-simple-table>
   </v-container>
@@ -34,6 +34,7 @@
 
 <script>
 import icons from "../assets/icons";
+import _ from 'lodash';
 
 export default {
   name: "ListeRestaurant",
@@ -151,7 +152,10 @@ export default {
       return index % 2 ? "white" : "LightGray";
     },
     chercherRestaurant: function () {
-      this.getRestaurantsFromServer();
+     _.debounce(function () {
+
+                    this.getRestaurantsFromServer();
+                }, 1000)
     },
 
     redirectDetails(r) {

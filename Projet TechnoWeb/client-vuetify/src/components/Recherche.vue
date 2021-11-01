@@ -4,6 +4,7 @@
       <v-col cols="5">
         <v-text-field
           label="#Restaurant"
+          @input="chercherRestaurant()"
           v-model="nomRestaurant"
         ></v-text-field>
       </v-col>
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 export default {
   name: "Recherche",
   data: () => ({
@@ -30,6 +32,11 @@ export default {
     rechercheRestaurant() {
       this.$store.commit("setNomRestaurantRecherche", this.nomRestaurant);
       this.$store.commit("setPageSize", this.pageSize);
+    },
+     chercherRestaurant: function () {
+     _.debounce(function () {
+                   this.rechercheRestaurant();
+                }, 1000)
     },
   },
 };
