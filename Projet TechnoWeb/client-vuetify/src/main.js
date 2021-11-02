@@ -29,9 +29,6 @@ const router = new VueRouter({
 })
 
 
-
-
-
 Vue.use(Vuex)
 // ------ STORE -------- //
 const store = new Vuex.Store({

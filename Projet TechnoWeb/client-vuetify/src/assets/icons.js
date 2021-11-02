@@ -1,13 +1,15 @@
-import { mdiStar,mdiStoreMarker,mdiSilverwareForkKnife,mdiAccount, mdiPencil, mdiShareVariant, mdiDelete } from "@mdi/js";
+import { mdiStoreSearch,mdiHomePlus, mdiStar, mdiStoreMarker, mdiSilverwareForkKnife, mdiAccount, mdiPencil, mdiShareVariant, mdiDelete } from "@mdi/js";
 
 const icons = {
-    mdiAccount,
-    mdiPencil,
-    mdiShareVariant,
-    mdiDelete,
-    mdiStoreMarker,
-    mdiSilverwareForkKnife,
-    mdiStar
-  }
+  mdiStoreSearch,
+  mdiHomePlus,
+  mdiAccount,
+  mdiPencil,
+  mdiShareVariant,
+  mdiDelete,
+  mdiStoreMarker,
+  mdiSilverwareForkKnife,
+  mdiStar
+}
 
 export default icons

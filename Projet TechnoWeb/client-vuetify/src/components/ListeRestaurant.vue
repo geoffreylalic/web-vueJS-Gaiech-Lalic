@@ -6,10 +6,11 @@
           <tr>
             <th class="text-left">Name</th>
             <th class="text-left">Cuisine</th>
+            <th class="text-left">Action</th>
           </tr>
         </thead>
         <tbody>
-          <p v-if="restaurants.length == 0">No data aviable</p>
+          <p v-if="restaurants.length == 0">No data available</p>
           <tr v-for="r in restaurants" :key="r._id" @click="redirectDetails(r)">
             <td>{{ r.name }}</td>
             <td>{{ r.cuisine }}</td>
@@ -116,37 +117,7 @@ export default {
         });
     },
 
-    ajouterRestaurant(event) {
-      event.preventDefault();
-
-      // Récupération du formulaire. Pas besoin de document.querySelector
-      // ou document.getElementById puisque c'est le formulaire qui a généré
-      // l'événement
-      let form = event.target;
-
-      // Récupération des valeurs des champs du formulaire
-      // en prévision d'un envoi multipart en ajax/fetch
-      let donneesFormulaire = new FormData(form);
-
-      let url = "http://localhost:8080/api/restaurants";
-
-      fetch(url, {
-        method: "POST",
-        body: donneesFormulaire,
-      })
-        .then((responseJSON) => {
-          responseJSON.json().then((res) => {
-            // Maintenant res est un vrai objet JavaScript
-            this.msg = res.msg;
-            this.getRestaurantsFromServer();
-          });
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
-      this.nom = "";
-      this.cuisine = "";
-    },
+    
     getColor(index) {
       return index % 2 ? "white" : "LightGray";
     },

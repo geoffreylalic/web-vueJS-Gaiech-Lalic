@@ -1,29 +1,32 @@
 <template>
   <v-container>
-    <v-row class="rechercheBar">
-      <v-col cols="5">
+    <v-row class="align-center">
+      <v-col cols="6">
         <v-text-field
-        @input="chercherRestaurant()"
-        type 
+          @input="chercherRestaurant()"
+          type
           label="#Restaurant"
-          
           v-model="nomRestaurant"
         ></v-text-field>
       </v-col>
-      <v-col cols="5">
-        <v-text-field label="#Page Size"   @input="chercherRestaurant()" v-model="pageSize"></v-text-field>
-      </v-col>
       <v-col cols="2">
-        <v-btn icon color="green" @click="rechercheRestaurant">
-          <v-icon>mdi-cached</v-icon>
-        </v-btn>
+        <v-slider
+          v-model="pageSize"
+          @change="chercherRestaurant()"
+          thumb-label="always"
+        ></v-slider>
+        <!-- <v-text-field
+          label="#Page Size"
+          @input="chercherRestaurant()"
+          v-model="pageSize"
+        ></v-text-field> -->
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import _ from 'lodash';
+import _ from "lodash";
 
 export default {
   name: "Recherche",
@@ -36,12 +39,9 @@ export default {
       this.$store.commit("setNomRestaurantRecherche", this.nomRestaurant);
       this.$store.commit("setPageSize", this.pageSize);
     },
-    chercherRestaurant:
-                _.debounce(function () {
-
-                    this.rechercheRestaurant();
-                }, 1000),
-   
+    chercherRestaurant: _.debounce(function () {
+      this.rechercheRestaurant();
+    }, 1000),
   },
 };
 </script>
