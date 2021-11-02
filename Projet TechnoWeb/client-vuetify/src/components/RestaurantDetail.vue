@@ -88,6 +88,8 @@ export default {
   mounted() {
     console.log(this.restaurant);
   },
-  created() {},
+  created(){
+  this.$store.commit("SetpageActive", "detailrestaurant");
+  },
 };
 </script>

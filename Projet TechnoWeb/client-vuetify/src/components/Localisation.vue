@@ -73,6 +73,9 @@ export default {
   mounted() {
     this.getRestaurantsFromServer();
   },
+  created(){
+  this.$store.commit("SetpageActive", "localisation");
+  },
 
   watch: {
     // watcher sur le nom du restaurant recherché en store

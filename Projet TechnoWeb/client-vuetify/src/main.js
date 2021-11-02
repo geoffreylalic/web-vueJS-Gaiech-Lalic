@@ -33,7 +33,7 @@ Vue.use(Vuex)
 // ------ STORE -------- //
 const store = new Vuex.Store({
   state: {
-    pageActive:'accueil',
+    pageActive:'',
     nomRestaurantRecherche: '',
     pageSize: '',
     restaurantActive : null,

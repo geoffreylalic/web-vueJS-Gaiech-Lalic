@@ -40,6 +40,7 @@ export default {
     icons,
     search: false,
   }),
+  
 
   methods: {
     searchClique() {
@@ -49,6 +50,9 @@ export default {
         this.search = true;
       }
     },
+  },
+  created(){
+  this.$store.commit("SetpageActive", "localisation");
   },
 };
 </script>

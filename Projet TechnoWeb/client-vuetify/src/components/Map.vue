@@ -37,8 +37,8 @@ export default {
   },
   data: () => ({
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    center: [1, 2],
-    zoom: 2,
+    center: [1,2],
+    zoom: 5,
     staticAnchor: [16, 37],
     markers: [],
   }),
@@ -48,6 +48,9 @@ export default {
     },
     centerUpdated(center) {
       this.center = center;
+    },
+    createdCenter(){
+      this.center=this.markers[0].coordinates;
     },
     createMarkers() {
       // c'est ici quand prend tout les données du marker
@@ -67,11 +70,13 @@ export default {
       
     },
      redirectDetails(r) {
+        if (this.$store.state.pageActive != "detailrestaurant") {
        this.$store.commit("SetpageActive", "detailrestaurant");
       return this.$router.push({
         name: "detailRestaurant",
         params: { id: r._id, restaurant: r },
       });
+        }
     },
 
     
@@ -79,12 +84,17 @@ export default {
 
   created() {
     this.createMarkers();
+     this.createdCenter()
+
   },
 
   watch: {
     coordinates() {
       this.markers = []; // remise a zero des coordonnées
+      this.center = [];
       this.createMarkers();
+      this.createdCenter();
+      
     },
   },
 };
