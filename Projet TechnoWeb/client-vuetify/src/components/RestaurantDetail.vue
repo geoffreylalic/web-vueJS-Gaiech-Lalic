@@ -35,15 +35,16 @@
       </v-card>
     </v-container>
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
+
+    <v-container>
+       <img v-bind:src="'https://loremflickr.com/1024/576/food,street,restaurant,cafe&id='+ item_id" alt="photoRestaurant" style="width:50%;height:50%;">
+    </v-container>
     <v-container>
       <Map
         :coordinates="[restaurant]"
       />
     </v-container>
+     
   </div>
 </template>
 
@@ -58,6 +59,7 @@ export default {
   data() {
     return {
       icons,
+      item_id:null,
     };
   },
 
@@ -71,7 +73,13 @@ export default {
     restaurant: null,
   },
 
-  methods: {},
+  methods: {
+     getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+   this.item_id = Math.floor(Math.random() * (max - min +1)) + min;
+},
+},
 
   computed: {
     averageScore: function () {
@@ -90,6 +98,7 @@ export default {
   },
   created(){
   this.$store.commit("SetpageActive", "detailrestaurant");
+     this.getRandomIntInclusive(0, 100) ;
   },
 };
 </script>

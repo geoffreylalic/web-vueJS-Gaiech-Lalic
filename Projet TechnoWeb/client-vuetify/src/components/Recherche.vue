@@ -12,7 +12,7 @@
       <v-col cols="2">
         <v-slider
           v-model="pageSize"
-          max = 24000
+          max = 300
           @change="chercherRestaurant()"
           thumb-label
         ></v-slider>
