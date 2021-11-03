@@ -52,7 +52,10 @@ export default {
     },
   },
   created(){
-  this.$store.commit("SetpageActive", "localisation");
+  this.$store.commit("SetpageActive", "accueil");
   },
 };
 </script>
+<style >
+
+</style>

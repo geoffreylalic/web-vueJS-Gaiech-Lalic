@@ -6,7 +6,7 @@
     </v-container>
      <v-container>
 
-    <Map :coordinates="this.restaurants" />
+    <Map class="map"     :coordinates="this.restaurants" />
  </v-container>
   </v-app>
 </template>
@@ -88,3 +88,10 @@ export default {
   },
 };
 </script>
+
+<style >
+#map {
+ width: 65%;
+  height: 60%;
+}
+</style>

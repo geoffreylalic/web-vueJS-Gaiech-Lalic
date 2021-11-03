@@ -103,8 +103,8 @@ export default {
 <style>
 #map {
   position: absolute;
-  width: 40%;
-  height: 40%;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 img {
