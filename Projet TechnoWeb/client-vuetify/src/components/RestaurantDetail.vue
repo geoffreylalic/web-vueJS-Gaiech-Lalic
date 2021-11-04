@@ -35,7 +35,9 @@
       </v-card>
     </v-container>
     <br />
-
+    <v-container>
+       <CarteRestau/>
+    </v-container>
     <v-container>
        <img v-bind:src="'https://loremflickr.com/1024/576/food,street,restaurant,cafe&id='+ item_id" alt="photoRestaurant" style="width:50%;height:50%;">
     </v-container>
@@ -52,6 +54,7 @@
 import icons from "../assets/icons";
 import Menu from "./Menu.vue";
 import Map from "./Map.vue";
+import CarteRestau from "./CarteDesPlats.vue"
 
 export default {
   name: "RestaurantDetail",
@@ -66,6 +69,7 @@ export default {
   components: {
     Menu,
     Map,
+    CarteRestau
   },
 
   props: {

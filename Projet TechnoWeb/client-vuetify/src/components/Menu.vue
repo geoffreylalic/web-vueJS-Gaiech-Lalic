@@ -28,10 +28,13 @@
 
       <template v-slot:extension>
      
-    
+   <v-tabs
+          centered
+          hide-slider
+        >
  <v-tab @click="redirectAccueil()" > Accueil </v-tab>
     <v-tab @click="redirectLocalisation()"> Localisation </v-tab>
-   
+   </v-tabs>
       </template>
     </v-toolbar>
   </v-card>

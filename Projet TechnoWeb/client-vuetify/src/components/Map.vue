@@ -9,7 +9,8 @@
     @update:center="centerUpdated"
   >
     <l-tile-layer :url="url"> </l-tile-layer>
-    <l-marker v-for="m in markers" :key="m.id" :lat-lng="m.coordinates">
+    <div v-if="this.markers.length!=0">
+    <l-marker v-for="m in markers" :key="m.id" :lat-lng="m.coordinate">
       <l-icon :icon-anchor="staticAnchor">
         <img src="../assets/marker.png" />
       </l-icon>
@@ -17,6 +18,7 @@
         <a id="popup" @click=" redirectDetails(m)">{{ m.name }}!</a>
       </l-popup>
     </l-marker>
+     </div>
   </l-map>
 </template>
 
@@ -26,7 +28,7 @@ import "leaflet/dist/leaflet.css";
 
 export default {
   props: {
-    coordinates: [], // en reprend toute les coordonné utile du restaurant
+    coordinates:[], // en reprend toute les coordonné utile du restaurant
   },
   components: {
     LMap,
@@ -50,7 +52,7 @@ export default {
       this.center = center;
     },
     createdCenter(){
-      this.center=this.markers[0].coordinates;
+      this.center=this.markers[0].coordinate;
     },
     createMarkers() {
       // c'est ici quand prend tout les données du marker
@@ -59,7 +61,7 @@ export default {
         this.markers.push({
           _id: coord._id,
           address : coord.address,
-          coordinates: [coord.address.coord[1], coord.address.coord[0]],
+          coordinate: [coord.address.coord[1], coord.address.coord[0]],
           name: coord.name,
           borough:coord.borough,
           cuisine:coord.cuisine,
