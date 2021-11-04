@@ -69,6 +69,7 @@ export default {
           restaurant_id: coord.restaurant_id,
         });
       });
+      //this.createdCenter()
       
     },
      redirectDetails(r) {
@@ -83,19 +84,22 @@ export default {
 
     
   },
-
+ updated() {
+  this.$nextTick(function () {
+    // Code that will run only after the
+    // entire view has been re-rendered
+    this.createdCenter()
+  })
+},
   created() {
-    this.createMarkers();
-     this.createdCenter()
-
+     this.createMarkers();
+      //this.createdCenter()
   },
 
   watch: {
     coordinates() {
       this.markers = []; // remise a zero des coordonnées
-      this.center = [];
       this.createMarkers();
-      this.createdCenter();
       
     },
   },
