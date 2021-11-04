@@ -1,14 +1,14 @@
 <template>
   <v-app>
     <Menu />
-    <div class="text-h5">Liste des restaurants</div>
-    <div>
+    <v-container class="text-h5">
+      Liste des restaurants
       <v-btn @click="searchClique">
         <v-icon color="green">
           {{ icons.mdiStoreSearch }}
         </v-icon>
       </v-btn>
-    </div>
+    </v-container>
 
     <div v-if="search">
       <Recherche />

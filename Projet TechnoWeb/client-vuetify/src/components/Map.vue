@@ -84,15 +84,17 @@ export default {
 
     
   },
- updated() {
-  this.$nextTick(function () {
+ beforeUpdate() {
+  
     // Code that will run only after the
     // entire view has been re-rendered
     this.createdCenter()
-  })
 },
   created() {
      this.createMarkers();
+     if (this.markers.length ==1){
+       this.createdCenter()
+     }
       //this.createdCenter()
   },
 
