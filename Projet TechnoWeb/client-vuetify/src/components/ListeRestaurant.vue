@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <p v-if="restaurants.length == 0">No data available</p>
-          <tr v-for="r in restaurants" :key="r._id" @click="redirectDetails(r)">
+          <tr v-for="r in restaurants" :key="r._id">
             <td>{{ r.name }}</td>
             <td>{{ r.cuisine }}</td>
             <td>
@@ -100,7 +100,9 @@ export default {
     },
 
     supprimerRestaurant(r) {
-      let url = "http://localhost:8080/api/restaurants/?" + r._id;
+      console.log(r._id)
+      let url = "http://localhost:8080/api/restaurants/" + r._id;
+      
       fetch(url, {
         method: "DELETE",
       })
