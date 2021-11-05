@@ -11,9 +11,9 @@
         </thead>
         <tbody>
           <p v-if="restaurants.length == 0">No data available</p>
-          <tr v-for="r in restaurants" :key="r._id">
-            <td>{{ r.name }}</td>
-            <td>{{ r.cuisine }}</td>
+          <tr v-for="r in restaurants" :key="r._id" >
+            <td @click="redirectDetails(r)">{{ r.name }}</td>
+            <td @click="redirectDetails(r)">{{ r.cuisine }}</td>
             <td>
               <v-btn icon color="red" @click="supprimerRestaurant(r)">
                 <v-icon>{{ icons.mdiDelete }}</v-icon>
@@ -100,9 +100,7 @@ export default {
     },
 
     supprimerRestaurant(r) {
-      console.log(r._id)
       let url = "http://localhost:8080/api/restaurants/" + r._id;
-      
       fetch(url, {
         method: "DELETE",
       })
