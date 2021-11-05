@@ -1,6 +1,6 @@
 # web-vueJS-Gaiech-Lalic
 
-Pour ce projet, nous avons utilisé trois librairies:
+Pour ce projet, nous avons utilisé quatre librairies:
 - vuetify, pour les composants
 - VueX, pour gérer les états entre les composants
 - VueRouter, pour la navigation entre les composants, cela nous a également permis d'envoyer des objets entre les composants sous forme de props
