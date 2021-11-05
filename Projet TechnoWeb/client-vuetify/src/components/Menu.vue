@@ -1,19 +1,4 @@
 <template>
-  <!-- un autre menu
-    <div class="centrer">
-<div class="topnav">
-  <a id="blanc" @click="redirectAccueil()">Accueil</a>
-  <a id="blanc" @click="redirectLocalisation()">Localisation</a>
-  <a id="blanc" >Admin</a>
-</div>
-</div>
- 
-  <v-tabs id="menu" fixed-tabs background-color="indigo" dark>
-    <v-tab @click="redirectAccueil()" > Accueil </v-tab>
-    <v-tab @click="redirectLocalisation()"> Localisation </v-tab>
-    <v-tab> Admin </v-tab>
-  </v-tabs> -->
-
  <v-card>
     <v-toolbar
       color="cyan"

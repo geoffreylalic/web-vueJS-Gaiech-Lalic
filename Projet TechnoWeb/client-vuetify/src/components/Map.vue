@@ -102,6 +102,7 @@ export default {
     coordinates() {
       this.markers = []; // remise a zero des coordonnées
       this.createMarkers();
+        this.createdCenter();
       
     },
   },

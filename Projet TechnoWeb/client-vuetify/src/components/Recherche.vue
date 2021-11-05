@@ -12,15 +12,11 @@
       <v-col cols="2">
         <v-slider
           v-model="pageSize"
+          min = 10
           max = 300
           @change="chercherRestaurant()"
           thumb-label
         ></v-slider>
-        <!-- <v-text-field
-          label="#Page Size"
-          @input="chercherRestaurant()"
-          v-model="pageSize"
-        ></v-text-field> -->
       </v-col>
     </v-row>
   </v-container>
