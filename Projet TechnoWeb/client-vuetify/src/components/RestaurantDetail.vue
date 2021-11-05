@@ -22,19 +22,8 @@
       </v-card>
     </v-container>
     <br />
-    <br />
-    <br />
-    <br />
+  
 
-    <v-container>
-      <v-card>
-        <v-row v-for="(grade, i) in restaurant.grades" :key="i">{{
-          grade
-        }}
-        </v-row>
-      </v-card>
-    </v-container>
-    <br />
     <v-container>
        <CarteRestau/>
     </v-container>

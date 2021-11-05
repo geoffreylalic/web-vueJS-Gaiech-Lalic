@@ -31,9 +31,10 @@
    <v-tabs
           centered
           hide-slider
+          
         >
- <v-tab @click="redirectAccueil()" > Accueil </v-tab>
-    <v-tab @click="redirectLocalisation()"> Localisation </v-tab>
+ <v-tab @click="redirectAccueil()" > <a id="blanc">Accueil</a> </v-tab>
+    <v-tab @click="redirectLocalisation()" > <a id="blanc">Localisation</a> </v-tab>
    </v-tabs>
       </template>
     </v-toolbar>
