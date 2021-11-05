@@ -7,7 +7,7 @@
     >
       <v-app-bar-nav-icon style="background-color:#00bcd4"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Liste des meilleur restaurants</v-toolbar-title>
+      <v-toolbar-title>Liste des meilleurs restaurants</v-toolbar-title>
 
     
 
@@ -37,14 +37,14 @@ export default {
     redirectLocalisation() {
       if (this.$store.state.pageActive != "localisation") {
         this.$store.commit("SetpageActive", "localisation");
-        return this.$router.push({ name: "localisation", params: {} });
+        return this.$router.push({ name: "localisation" });
       }
     },
 
     redirectAccueil() {
       if (this.$store.state.pageActive != "accueil") {
         this.$store.commit("SetpageActive", "accueil");
-        return this.$router.push({ name: "accueil", params: {} });
+        return this.$router.push({ name: "accueil"});
       }
     },
   },
