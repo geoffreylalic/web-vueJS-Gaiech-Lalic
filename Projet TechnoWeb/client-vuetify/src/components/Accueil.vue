@@ -2,7 +2,7 @@
   <v-app>
     <Menu />
     <v-container class="text-h5">
-      Liste des restaurants
+      Rechercher des restaurants
       <v-btn @click="searchClique">
         <v-icon color="green">
           {{ icons.mdiStoreSearch }}
